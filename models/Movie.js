@@ -4,19 +4,19 @@ const movieSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        minLength: 2,
-        maxLength: 400
+        minlength: 2,
+        maxlength: 400
     },
     producer: {
         type: String,
         required: true,
-        minLength: 8,
-        maxLength: 300
+        minlength: 8,
+        maxlength: 300
     },
     categories: {
         type: [String],
         required: true,
-        minLength: 1,
+        validate: [a => a.length > 0, "{PATH} requires at least une element."],
         enum: ["comedy", "action", "thriller", "drama", "family", "fantasy", "sf", "musical", "western"]
     },
     views: {
